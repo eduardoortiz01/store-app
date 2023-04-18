@@ -1,0 +1,44 @@
+<app-title title="Cart Page" margin = "1.5rem 0 0 2.5rem"></app-title>
+
+<div class = "container">
+  <ul>
+    <li *ngFor  = "let cartItem of cart.items">
+      <div>
+        <img [src] = "cartItem.product.imageurl" [alt]="cartItem.product.name"/>
+      </div>
+      <div>
+        <a routerLink = "/product/{{cartItem.product.id}}">
+          {{cartItem.product.name}}
+        </a>
+      </div>
+      <div>
+        <select #quantitySelect 
+        [value] = "cartItem.quantity"
+        (change) = "changeQuantity(cartItem,quantitySelect.value)"
+        >
+          <option>1</option>
+          <option>2</option>
+          <option>3</option>
+          <option>4</option>
+          <option>5</option>
+        </select>
+        
+      </div>
+      <div>
+        {{cartItem.price | currency}}
+      </div>
+      <div>
+        <button class="remove-button" (click)="removeFromCart(cartItem)">
+          Remover
+        </button>
+      </div>
+    </li>
+  </ul>
+  <div *ngIf = 'cart.totalCount' class = "checkout"> <!--? agregado, no se ocultaba-->
+    <div>
+      <div class = "products-count">{{cart.totalCount}}</div>
+      <div class = "products-price">{{cart.totalPrice}}</div>
+    </div>
+    <a routerLink = "/checkout">Proceder a Checkout</a>
+  </div>
+</div>

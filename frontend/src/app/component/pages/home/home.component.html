@@ -1,0 +1,22 @@
+
+<app-search></app-search>
+<app-tags></app-tags>
+<ul>
+  <li *ngFor = "let product of products">
+    <a routerLink="/product/{{product.id}}">
+      <img [src] = "product.imageurl" [alt] = "product.name"/>
+      <div class="content">
+        <div class = "name">
+          {{product.name}}
+        </div>
+        <div class="details {{product.details? '': 'not'}}">
+          {{product.details}}
+        </div>
+        <div class="price">
+          {{product.price}} soles
+        </div>
+        
+      </div>
+    </a>
+  </li>
+</ul>

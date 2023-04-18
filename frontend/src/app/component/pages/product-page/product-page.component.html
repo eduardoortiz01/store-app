@@ -1,0 +1,25 @@
+<div class = "container">
+  <img [src] = "product.imageurl" [alt] = "product.name"/>
+  <div class="details">
+    <div class="header">
+      <span class="name">
+        {{product.name}}
+      </span>
+      <span class = "detailsprod {{product.details? '': 'not'}}">
+        {{product.details}}
+      </span>
+
+    </div>
+    <div class="tags">
+      <a *ngFor = "let tag of product.tags" routerLink = "/tag/{{tag}}">
+        {{tag}}
+      </a>
+    </div>
+    <div class="price"> 
+      <span>
+        {{product.price}}
+      </span>     
+    </div>
+    <button (click) = 'addToCart()'>Agregar a carrito</button>
+  </div>
+</div>
